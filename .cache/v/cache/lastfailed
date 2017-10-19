@@ -1,0 +1,6 @@
+{
+  "test_trigrams.py::test_sting_list[0-One]": true,
+  "test_trigrams.py::test_sting_list[2-was]": true,
+  "test_trigrams.py::test_sting_list[6-of]": true,
+  "test_trigrams.py::test_sting_list[9-returning]": true
+}
