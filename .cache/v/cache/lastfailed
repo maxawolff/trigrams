@@ -1,6 +1,14 @@
 {
+  "test_trigrams.py::test_remove_n": true,
   "test_trigrams.py::test_sting_list[0-One]": true,
   "test_trigrams.py::test_sting_list[2-was]": true,
+  "test_trigrams.py::test_sting_list[3-on]": true,
+  "test_trigrams.py::test_sting_list[4-the]": true,
   "test_trigrams.py::test_sting_list[6-of]": true,
-  "test_trigrams.py::test_sting_list[9-returning]": true
+  "test_trigrams.py::test_sting_list[9-returning]": true,
+  "test_trigrams.py::test_sting_to_list[2-was]": true,
+  "test_trigrams.py::test_sting_to_list[3-on]": true,
+  "test_trigrams.py::test_sting_to_list[4-the]": true,
+  "test_trigrams.py::test_sting_to_list[6-of]": true,
+  "test_trigrams.py::test_sting_to_list[8-returning]": true
 }

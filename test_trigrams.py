@@ -2,24 +2,32 @@
 import pytest
 
 
-def test_open_file():
+def test_read_text():
     """."""
-    from trigrams import processes_input
+    from trigrams import read_text
     # assert processes_input('sherlock_sample.txt') == True
-    if processes_input('sherlock_sample.txt'):
+    if read_text('sherlock_sample.txt'):
         assert True
     else:
         assert False
 
 
-words = [(2, 'was'), (6, 'of'), (0, 'One'), (9, 'returning')]
+words = [(1, 'was'), (2, 'on'), (3, 'the'), (5, 'of'),
+         (0, 'One'), (7, 'returning')]
 
 
 @pytest.mark.parametrize('n, result', words)
-def test_sting_list(n, result):
+def test_sting_to_list(n, result):
     """."""
-    from trigrams import input_string_to_list, processes_input
-    test_string = processes_input('sherlock_sample.txt')
-    list = input_string_to_list(test_string)
-    # assert list[n] == result
-    assert list == 'One'
+    from trigrams import string_to_list, read_text, remove_ns
+    test_string = read_text('sherlock_sample.txt')
+    another_string = remove_ns(test_string)
+    str_list = string_to_list(another_string)
+    assert str_list[n] == result
+
+
+def test_remove_ns():
+    """."""
+    from trigrams import remove_ns
+    assert remove_ns(
+        '\nHello world \nhow are you') == '  Hello world  how are you'
