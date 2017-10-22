@@ -1,5 +1,7 @@
 """Kata fourteen."""
 
+key_dict = {}
+
 
 def read_text(source_file):
     """Take a .txt file, read it, and save as a string."""
@@ -20,15 +22,6 @@ def string_to_list(text):
     return new_list
 
 
-"""
-def clean_up_text(a_string):
-   Remove unwanted characters from string.
-    while not a_string.isalnum():
-        for letter in a_string:
-            if not letter.isalnum():
-"""
-
-
 def remove_ns(a_string):
     """Remove the newline characters from a string."""
     list_of_sentences = a_string.split('\n')
@@ -36,3 +29,14 @@ def remove_ns(a_string):
     for item in list_of_sentences:
         sentences += ' ' + item
     return sentences
+
+
+def make_keys(list_of_keys):
+    """."""
+    for idx in range(0, len(list_of_keys) - 2):
+        key = list_of_keys[idx] + ' ' + list_of_keys[idx + 1]
+        if key in key_dict:
+            key_dict[key].append(list_of_keys[idx + 2])
+        else:
+            key_dict[key] = [list_of_keys[idx + 2]]
+    return key_dict

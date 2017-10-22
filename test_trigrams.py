@@ -31,3 +31,13 @@ def test_remove_ns():
     from trigrams import remove_ns
     assert remove_ns(
         '\nHello world \nhow are you') == '  Hello world  how are you'
+
+
+def test_make_keys():
+    """."""
+    test_list = ["I", "wish", "I", "may", "I", "wish", "I", "might"]
+    test_dict = {
+        "I wish": ["I", "I"], "wish I": ["may", "might"],
+        "may I": ["wish"], "I may": ["I"]}
+    from trigrams import make_keys
+    assert make_keys(test_list) == test_dict
