@@ -1,6 +1,7 @@
 """Kata fourteen."""
 
 key_dict = {}
+list_of_keys = []
 
 
 def read_text(source_file):
@@ -31,12 +32,45 @@ def remove_ns(a_string):
     return sentences
 
 
-def make_keys(list_of_keys):
+def make_dictionary(list_of_strings):
     """."""
-    for idx in range(0, len(list_of_keys) - 2):
-        key = list_of_keys[idx] + ' ' + list_of_keys[idx + 1]
+    key_dict = {}
+    for idx in range(0, len(list_of_strings) - 2):
+        key = list_of_strings[idx] + ' ' + list_of_strings[idx + 1]
         if key in key_dict:
-            key_dict[key].append(list_of_keys[idx + 2])
+            key_dict[key].append(list_of_strings[idx + 2])
         else:
-            key_dict[key] = [list_of_keys[idx + 2]]
+            key_dict[key] = [list_of_strings[idx + 2]]
     return key_dict
+
+
+def make_keys(list_of_strings):
+    """."""
+    list_of_keys = []
+    for idx in range(0, len(list_of_strings) - 2):
+        key = list_of_strings[idx] + ' ' + list_of_strings[idx + 1]
+        if key not in list_of_keys:
+            list_of_keys.append(key)
+    return list_of_keys
+
+
+def choose_random_word(key, a_dict):
+    """."""
+    import random
+    if key not in a_dict:
+        return("That key is not in the dictionary")
+    else:
+        return(random.choice(a_dict[key]))
+
+
+def choose_random_key(list_of_keys):
+    """."""
+    import random
+    return(random.choice(list_of_keys))
+
+
+def choose_next_word(key):
+    """."""
+    word = choose_random_word(key_dict[key], key_dict)
+    if word == "That key is not in the dictionary":
+        choose_next_word()

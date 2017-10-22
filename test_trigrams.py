@@ -41,3 +41,15 @@ def test_make_keys():
         "may I": ["wish"], "I may": ["I"]}
     from trigrams import make_keys
     assert make_keys(test_list) == test_dict
+
+
+def test_choose_random_word():
+    """."""
+    from trigrams import choose_random_word
+    test_key = "wish I"
+    test_val1 = "may"
+    test_val2 = "might"
+    test_dict = {
+        "I wish": ["I", "I"], "wish I": ["may", "might"],
+        "may I": ["wish"], "I may": ["I"]}
+    assert choose_random_word(test_key, test_dict) == test_val1 or test_val2
