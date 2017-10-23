@@ -69,8 +69,36 @@ def choose_random_key(list_of_keys):
     return(random.choice(list_of_keys))
 
 
-def choose_next_word(key):
+def choose_next_word(key, a_dict):
     """."""
     word = choose_random_word(key_dict[key], key_dict)
     if word == "That key is not in the dictionary":
         choose_next_word()
+
+
+def main(n, path):
+    """."""
+    # import pdb
+    words = ''
+    raw_text = read_text(path)
+    better_text = remove_ns(raw_text)
+    list_of_strings = string_to_list(better_text)
+    list_of_keys = make_keys(list_of_strings)
+    dict_of_kvp = make_dictionary(list_of_strings)
+    starting_val = choose_random_key(list_of_keys)
+    words = starting_val
+    # chooses random two words to start
+
+    for i in range(0, n - 2):
+        while(starting_val not in dict_of_kvp):
+            starting_val = choose_random_key(list_of_keys)
+        possible_words = dict_of_kvp[starting_val]
+        chosen_word = choose_random_key(possible_words)
+        # chooses a word that can follow the first two
+        words += ' ' + chosen_word
+        # new word is added to words
+        some_list = words.split(' ')
+        # pdb.set_trace()
+        starting_val = some_list[len(some_list) - 2] + ' ' + some_list[len(some_list) - 1]
+        # resets starting value to be the last two words in words
+    return words
