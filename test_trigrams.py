@@ -36,20 +36,22 @@ def test_remove_ns():
 def test_make_keys():
     """."""
     test_list = ["I", "wish", "I", "may", "I", "wish", "I", "might"]
-    test_dict = {
-        "I wish": ["I", "I"], "wish I": ["may", "might"],
-        "may I": ["wish"], "I may": ["I"]}
+    test_dict = ["I wish", "wish I", "I may",
+                 "may I", "I might"]
     from trigrams import make_keys
     assert make_keys(test_list) == test_dict
 
 
-def test_choose_random_word():
+def test_random_key():
     """."""
-    from trigrams import choose_random_word
-    test_key = "wish I"
-    test_val1 = "may"
-    test_val2 = "might"
-    test_dict = {
-        "I wish": ["I", "I"], "wish I": ["may", "might"],
-        "may I": ["wish"], "I may": ["I"]}
-    assert choose_random_word(test_key, test_dict) == test_val1 or test_val2
+    from trigrams import choose_random_key
+    list_of_keys = ["this", "is", "a", "test"]
+    assert choose_random_key(list_of_keys) == "this" or "is" or "a" or "test"
+
+
+def test_make_dict():
+    """."""
+    from trigrams import make_dictionary
+    sample_list = ["this", "is", "a", "test"]
+    sample_dict = {"this is": ["a"], "is a": ["test"]}
+    assert make_dictionary(sample_list) == sample_dict

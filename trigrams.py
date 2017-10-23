@@ -14,7 +14,10 @@ def read_text(source_file):
 
 
 def string_to_list(text):
-    """Take a string return a list of strings sepperated on spaces."""
+    """Take a string return a list of strings sepperated on space.
+
+    also removes non-alpha numeric characters, originally to remove spaces
+    """
     list_of_words = text.split(' ')
     new_list = []
     for word in list_of_words:
@@ -33,7 +36,7 @@ def remove_ns(a_string):
 
 
 def make_dictionary(list_of_strings):
-    """."""
+    """Generate a dictionary with two word keys and the next word as value."""
     key_dict = {}
     for idx in range(0, len(list_of_strings) - 2):
         key = list_of_strings[idx] + ' ' + list_of_strings[idx + 1]
@@ -45,40 +48,23 @@ def make_dictionary(list_of_strings):
 
 
 def make_keys(list_of_strings):
-    """."""
+    """Generate keys gives a list of strings."""
     list_of_keys = []
-    for idx in range(0, len(list_of_strings) - 2):
+    for idx in range(0, len(list_of_strings) - 1):
         key = list_of_strings[idx] + ' ' + list_of_strings[idx + 1]
         if key not in list_of_keys:
             list_of_keys.append(key)
     return list_of_keys
 
 
-def choose_random_word(key, a_dict):
-    """."""
-    import random
-    if key not in a_dict:
-        return("That key is not in the dictionary")
-    else:
-        return(random.choice(a_dict[key]))
-
-
 def choose_random_key(list_of_keys):
-    """."""
+    """Choose a random key given a list of keys."""
     import random
     return(random.choice(list_of_keys))
 
 
-def choose_next_word(key, a_dict):
-    """."""
-    word = choose_random_word(key_dict[key], key_dict)
-    if word == "That key is not in the dictionary":
-        choose_next_word()
-
-
-def main(n, path):
-    """."""
-    # import pdb
+def main(n, path):  # pragma: no cover
+    """Function to run when program is called, makes the trigram."""
     words = ''
     raw_text = read_text(path)
     better_text = remove_ns(raw_text)
@@ -98,7 +84,12 @@ def main(n, path):
         words += ' ' + chosen_word
         # new word is added to words
         some_list = words.split(' ')
-        # pdb.set_trace()
         starting_val = some_list[len(some_list) - 2] + ' ' + some_list[len(some_list) - 1]
         # resets starting value to be the last two words in words
+    print(words)
     return words
+
+
+if __name__ == '__main__':
+    import sys
+    main(int(sys.argv[1]), str(sys.argv[2]))

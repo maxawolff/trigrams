@@ -1,4 +1,5 @@
 {
+  "test_trigrams.py::test_choose_random_word": true,
   "test_trigrams.py::test_remove_n": true,
   "test_trigrams.py::test_sting_list[0-One]": true,
   "test_trigrams.py::test_sting_list[2-was]": true,
